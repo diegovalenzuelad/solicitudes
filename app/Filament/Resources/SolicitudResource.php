@@ -2,16 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\SolicitudResource\Pages;
-use App\Filament\Resources\SolicitudResource\RelationManagers;
-use App\Models\Solicitud;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Solicitud;
 use Filament\Tables\Table;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\SolicitudResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\SolicitudResource\RelationManagers;
+use App\Filament\Resources\SolicitudResource\Widgets\SolicitudStatsOverview;
 
 class SolicitudResource extends Resource
 {
@@ -100,6 +101,13 @@ class SolicitudResource extends Resource
         ];
     }
 
+    public static function getWidgets(): array
+    {
+        return[
+            SolicitudStatsOverview::class,
+        ];
+    }
+
     public static function getPages(): array
     {
         return [
@@ -108,4 +116,6 @@ class SolicitudResource extends Resource
             'edit' => Pages\EditSolicitud::route('/{record}/edit'),
         ];
     }
+
+   
 }

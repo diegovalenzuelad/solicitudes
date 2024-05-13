@@ -2,9 +2,10 @@
 
 namespace App\Filament\Resources\SolicitudResource\Pages;
 
-use App\Filament\Resources\SolicitudResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\SolicitudResource;
+use App\Filament\Resources\SolicitudResource\Widgets\SolicitudStatsOverview;
 
 class ListSolicituds extends ListRecords
 {
@@ -14,6 +15,13 @@ class ListSolicituds extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+
+    protected function getHeaderWidgets(): array
+    {
+        return[
+            SolicitudStatsOverview::class,
         ];
     }
 }
