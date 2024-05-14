@@ -5,6 +5,7 @@ namespace App\Filament\Resources\UnitResource\Pages;
 use App\Filament\Resources\UnitResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\UnitResource\Widgets\UnitStatsOverview;
 
 class ListUnits extends ListRecords
 {
@@ -14,6 +15,12 @@ class ListUnits extends ListRecords
     {
         return [
             Actions\CreateAction::make(),
+        ];
+    }
+    protected function getHeaderWidgets(): array
+    {
+        return[
+            UnitStatsOverview::class,
         ];
     }
 }
