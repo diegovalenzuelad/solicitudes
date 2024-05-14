@@ -31,23 +31,26 @@ class SolicitudResource extends Resource
                 Forms\Components\FileUpload::make('sc')
                     ->acceptedFileTypes(['application/pdf'])
                     ->preserveFilenames()
+                    ->uploadingMessage('Subiendo archivo...')
                     ->required()
-                    ->placeholder('Adjunta tu solicitud o arrastra tu archivo PDF aquí')
-                    ->previewable(false)
+                    ->placeholder('Adjunta tu solicitud o arrastra tu archivo PDF aquí')                    
                     ->downloadable(),
                     //->maxLength(255),
                 Forms\Components\FileUpload::make('ft')
                 ->acceptedFileTypes(['application/pdf'])
                     ->preserveFilenames()
+                    ->uploadingMessage('Subiendo archivo...')
                     ->required()
-                    ->placeholder('Adjunta ficha técnica o arrastra tu archivo PDF aquí')
-                    ->previewable(false)
+                    ->placeholder('Adjunta ficha técnica o arrastra tu archivo PDF aquí')                    
                     ->downloadable(),
                     //->maxLength(255),
                 Forms\Components\FileUpload::make('image')
+                    ->directory('image-filament')
                     ->image()
+                    ->preserveFilenames()
                     ->required()
                     ->previewable(false)
+                    ->imageEditor()
                     ->downloadable(),
                 Forms\Components\Select::make('units_id')
                     ->relationship('units', 'nombre')
@@ -66,10 +69,11 @@ class SolicitudResource extends Resource
                 Tables\Columns\TextColumn::make('sc')
                     ->searchable()
                     ->limit(10),
-                Tables\Columns\TextColumn::make('ft')
+                Tables\Columns\TextColumn::make('ft')                    
                     ->searchable()
                     ->limit(10),
-                Tables\Columns\ImageColumn::make('image'),
+                Tables\Columns\ImageColumn::make('image')
+                    ->circular(),                    
                 Tables\Columns\TextColumn::make('units.nombre')
                     ->numeric()
                     ->sortable()

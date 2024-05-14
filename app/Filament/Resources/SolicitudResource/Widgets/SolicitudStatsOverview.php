@@ -12,6 +12,7 @@ class SolicitudStatsOverview extends BaseWidget
     {
         return [
             Stat::make('Total de solicitudes', Solicitud::all()->count()),
+            //Stat::make('Unidad con más solicitudes', Solicitud::find('unit_id')->count()),
                            
             //Stat::make('Bounce rate', '21%')
             //->description('7% decrease')
