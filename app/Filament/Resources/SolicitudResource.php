@@ -65,24 +65,30 @@ class SolicitudResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('solicitud')
+                    ->label('Resumen Solicitud')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('sc')
+                    ->label('Solcitud de Compra')
                     ->searchable()
                     ->limit(10),
-                Tables\Columns\TextColumn::make('ft')                    
+                Tables\Columns\TextColumn::make('ft')  
+                    ->label('Ficha Técnica')                  
                     ->searchable()
                     ->limit(10),
                 Tables\Columns\ImageColumn::make('image')
                     ->circular(),                    
                 Tables\Columns\TextColumn::make('units.nombre')
+                    ->label('Unidad')
                     ->numeric()
                     ->sortable()
                     ->limit(15),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Creado')
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Actualizado')
                     ->dateTime('d M Y H:i')
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
